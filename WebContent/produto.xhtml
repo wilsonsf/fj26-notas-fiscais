@@ -10,6 +10,12 @@
 </h:head>
 <h:body>
   <h:form>
+    <h:inputHidden value="#{produtoBean.produto.id}" />
+    <h2>
+      <h:outputText value="Novo Produto" rendered="#{empty produtoBean.produto.id}"/>
+      <h:outputText value="Editar Produto" rendered="#{not empty produtoBean.produto.id}"/>
+    </h2>
+
     <h:panelGrid columns="2">
       <h:outputLabel value="Nome: " for="nome" />
       <h:inputText id="nome" value="#{produtoBean.produto.nome}" />
@@ -23,7 +29,9 @@
           <!-- tipos: email, date, search, url, tel, range, text (padrão) -->
       </h:inputText>
 
-      <h:commandButton value="Gravar" action="#{produtoBean.grava}" />
+      <h:commandButton value="Gravar" action="#{produtoBean.grava}" rendered="#{empty produtoBean.produto.id}"/>
+      <h:commandButton value="Atualizar" action="#{produtoBean.grava}" rendered="#{not empty produtoBean.produto.id}"/>
+
     </h:panelGrid>
   </h:form>
 
@@ -48,6 +56,9 @@
 
     <h:column>
       <f:facet name="header">Ações</f:facet>
+      <h:commandLink value="Alterar">
+        <f:setPropertyActionListener value="#{produto}" target="#{produtoBean.produto}" />
+      </h:commandLink>
       <h:commandLink action="#{produtoBean.remove(produto)}" value="Remover" />
     </h:column>
 

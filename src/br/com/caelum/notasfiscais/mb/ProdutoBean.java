@@ -16,7 +16,12 @@ public class ProdutoBean {
 	private ProdutoDao dao = new ProdutoDao();
 
 	public void grava() {
-		this.dao.adiciona(this.produto);
+		if(this.produto.getId() == null) {
+			this.dao.adiciona(this.produto);
+		} else {
+			this.dao.atualiza(this.produto);
+		}
+
 		limpaFormularioDeProduto();
 
 		atualizaListagemDeProdutos();
@@ -37,6 +42,10 @@ public class ProdutoBean {
 
 	public Produto getProduto() {
 		return this.produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
 
 	public List<Produto> getProdutos() {
