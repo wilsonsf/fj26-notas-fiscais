@@ -31,6 +31,7 @@
 
       <h:commandButton value="Gravar" action="#{produtoBean.grava}" rendered="#{empty produtoBean.produto.id}"/>
       <h:commandButton value="Atualizar" action="#{produtoBean.grava}" rendered="#{not empty produtoBean.produto.id}"/>
+      <h:commandButton value="Cancelar" action="#{produtoBean.cancela}"/>
 
     </h:panelGrid>
   </h:form>

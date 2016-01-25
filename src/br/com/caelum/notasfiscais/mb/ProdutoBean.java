@@ -36,6 +36,10 @@ public class ProdutoBean {
 		atualizaListagemDeProdutos();
 	}
 
+	public void cancela() {
+		limpaFormularioDeProduto();
+	}
+
 	private void atualizaListagemDeProdutos() {
 		this.produtos = this.dao.listaTodos();
 	}
