@@ -60,7 +60,9 @@
       <h:commandLink value="Alterar">
         <f:setPropertyActionListener value="#{produto}" target="#{produtoBean.produto}" />
       </h:commandLink>
-      <h:commandLink action="#{produtoBean.remove(produto)}" value="Remover" />
+      <h:commandLink action="#{produtoBean.remove(produto)}" value="Remover">
+        <f:ajax render="@form"/>
+      </h:commandLink>
     </h:column>
 
   </h:dataTable>
