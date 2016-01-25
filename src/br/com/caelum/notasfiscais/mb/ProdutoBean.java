@@ -17,8 +17,21 @@ public class ProdutoBean {
 
 	public void grava() {
 		this.dao.adiciona(this.produto);
-		this.produto = new Produto();
+		limpaFormularioDeProduto();
 
+		atualizaListagemDeProdutos();
+	}
+
+	private void limpaFormularioDeProduto() {
+		this.produto = new Produto();
+	}
+
+	public void remove(Produto produto) {
+		this.dao.remove(produto);
+		atualizaListagemDeProdutos();
+	}
+
+	private void atualizaListagemDeProdutos() {
 		this.produtos = this.dao.listaTodos();
 	}
 
@@ -28,7 +41,7 @@ public class ProdutoBean {
 
 	public List<Produto> getProdutos() {
 		if (this.produtos == null) {
-			this.produtos = this.dao.listaTodos();
+			atualizaListagemDeProdutos();
 		}
 
 		return this.produtos;
