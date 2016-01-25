@@ -1,5 +1,6 @@
 package br.com.caelum.notasfiscais.mb;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -31,6 +32,14 @@ public class ProdutoBean {
 		}
 
 		return this.produtos;
+	}
+
+	public BigDecimal getTotalProdutos() {
+		BigDecimal total = BigDecimal.ZERO;
+		for (Produto produto : this.produtos) {
+			total = total.add(BigDecimal.valueOf(produto.getPreco()));
+		}
+		return total;
 	}
 
 }

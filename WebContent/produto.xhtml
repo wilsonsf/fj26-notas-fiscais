@@ -27,7 +27,7 @@
         </h:panelGrid>
     </h:form>
 
-    <h:dataTable value="#{produtoBean.produtos}" var="produto">
+    <h:dataTable value="#{produtoBean.produtos}" var="produto" >
 
         <h:column>
             <f:facet name="header">Nome</f:facet>
@@ -42,7 +42,9 @@
         <h:column>
             <f:facet name="header">Valor</f:facet>
             #{produto.preco}
+            <f:facet name="footer">#{produtoBean.totalProdutos}</f:facet>
         </h:column>
+
 
     </h:dataTable>
 </h:body>
