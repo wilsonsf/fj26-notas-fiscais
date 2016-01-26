@@ -4,11 +4,12 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import br.com.caelum.notasfiscais.dao.ProdutoDao;
 import br.com.caelum.notasfiscais.modelo.Produto;
 
-@ManagedBean
+@ManagedBean @ViewScoped
 public class ProdutoBean {
 	private Produto produto = new Produto();
 	private List<Produto> produtos;
@@ -63,6 +64,9 @@ public class ProdutoBean {
 	public BigDecimal getTotalProdutos() {
 		BigDecimal total = BigDecimal.ZERO;
 		for (Produto produto : this.produtos) {
+			if(produto == null || produto.getPreco() == null) {
+				continue;
+			}
 			total = total.add(BigDecimal.valueOf(produto.getPreco()));
 		}
 		return total;
