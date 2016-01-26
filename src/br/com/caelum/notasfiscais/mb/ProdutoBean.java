@@ -1,20 +1,27 @@
 package br.com.caelum.notasfiscais.mb;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.caelum.notasfiscais.dao.ProdutoDao;
 import br.com.caelum.notasfiscais.modelo.Produto;
 
-@ManagedBean @ViewScoped
-public class ProdutoBean {
+@Named
+@RequestScoped
+public class ProdutoBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Inject
+	private ProdutoDao dao;
+
 	private Produto produto = new Produto();
 	private List<Produto> produtos;
-
-	private ProdutoDao dao = new ProdutoDao();
 
 	public void grava() {
 		if(this.produto.getId() == null) {
