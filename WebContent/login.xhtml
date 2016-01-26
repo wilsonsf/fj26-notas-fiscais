@@ -7,8 +7,12 @@
 <h:head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Sistema de Notas Fiscais - UberDist</title>
+  <h:outputStylesheet library="css" name="style.css"/>
 </h:head>
 <h:body>
+  <div id="cabecalho">
+    <h:graphicImage library="imagens" name="logo-uber.png" id="logoCompany"/>
+  </div> <!-- fim #cabecalho -->
   <div id="conteudo">
     <h2>Login no sistema</h2>
     <h:form id="formLogin">
@@ -23,6 +27,10 @@
         <h:commandButton value="Efetuar Login" action="#{loginBean.efetuaLogin}"/>
       </h:panelGrid>
     </h:form>
-  </div>
+  </div> <!-- fim #conteudo -->
+  <div id="rodape">
+    Copyright 2013.
+    Todos os Direitos reservados a Wilson.
+  </div> <!-- fim #rodape -->
 </h:body>
 </html>
