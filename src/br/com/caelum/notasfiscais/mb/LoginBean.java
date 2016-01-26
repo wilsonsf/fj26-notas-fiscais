@@ -35,6 +35,12 @@ public class LoginBean implements Serializable {
 		}
 	}
 
+	public String desloga() {
+		this.usuarioLogado.deslogar();
+
+		return "login?faces-redirect=true";
+	}
+
 	private void limpaFormulario() {
 		this.usuario = new Usuario();
 	}

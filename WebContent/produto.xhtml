@@ -13,7 +13,10 @@
 
   <div id="cabecalho">
     <h:graphicImage library="imagens" name="logo-uber.png" id="logoCompany"/>
-    <div id="usuarioLogado">Logado como: #{usuarioLogadoBean.usuario.login}</div>
+    <div id="usuarioLogado">
+    Logado como: #{usuarioLogadoBean.usuario.login}
+    <h:commandButton value="Sair" action="#{loginBean.desloga}"/>
+    </div>
   </div> <!-- fim #cabecalho -->
 
   <div id="conteudo">
