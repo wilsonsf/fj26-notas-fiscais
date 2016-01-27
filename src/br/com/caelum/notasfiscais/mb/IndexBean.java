@@ -2,11 +2,9 @@ package br.com.caelum.notasfiscais.mb;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import javax.enterprise.inject.Model;
 
-@Named
-@RequestScoped
+@Model
 public class IndexBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
