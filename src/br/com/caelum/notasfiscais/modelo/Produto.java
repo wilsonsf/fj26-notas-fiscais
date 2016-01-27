@@ -1,14 +1,18 @@
 package br.com.caelum.notasfiscais.modelo;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Produto {
+public class Produto implements Serializable{
 
-	@Id 
+	private static final long serialVersionUID = 1L;
+
+	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
@@ -19,7 +23,7 @@ public class Produto {
 	private Double preco;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -27,7 +31,7 @@ public class Produto {
 	}
 
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
 	public void setNome(String nome) {
@@ -35,7 +39,7 @@ public class Produto {
 	}
 
 	public String getDescricao() {
-		return descricao;
+		return this.descricao;
 	}
 
 	public void setDescricao(String descricao) {
@@ -43,7 +47,7 @@ public class Produto {
 	}
 
 	public Double getPreco() {
-		return preco;
+		return this.preco;
 	}
 
 	public void setPreco(Double preco) {

@@ -1,5 +1,7 @@
 package br.com.caelum.notasfiscais.modelo;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -14,7 +16,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class NotaFiscal {
+public class NotaFiscal implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -28,8 +32,16 @@ public class NotaFiscal {
 	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="notaFiscal")
 	private List<Item> itens = new ArrayList<Item>();
 
+	public BigDecimal getValorTotal() {
+		BigDecimal total = BigDecimal.ZERO;
+		for (Item item : this.itens) {
+			total = total.add(BigDecimal.valueOf(item.getTotal()));
+		}
+		return total;
+	}
+
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -37,7 +49,7 @@ public class NotaFiscal {
 	}
 
 	public String getCnpj() {
-		return cnpj;
+		return this.cnpj;
 	}
 
 	public void setCnpj(String cnpj) {
@@ -45,7 +57,7 @@ public class NotaFiscal {
 	}
 
 	public Calendar getData() {
-		return data;
+		return this.data;
 	}
 
 	public void setData(Calendar data) {
@@ -53,7 +65,7 @@ public class NotaFiscal {
 	}
 
 	public List<Item> getItens() {
-		return itens;
+		return this.itens;
 	}
 
 	public void setItens(List<Item> itens) {

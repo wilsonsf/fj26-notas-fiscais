@@ -1,5 +1,7 @@
 package br.com.caelum.notasfiscais.modelo;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,12 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Item {
+public class Item implements Serializable {
 
-	@Id 
+	private static final long serialVersionUID = 1L;
+
+	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@ManyToOne
 	private NotaFiscal notaFiscal;
 
@@ -20,11 +24,11 @@ public class Item {
 	private Produto produto;
 
 	private Integer quantidade;
-	
+
 	private Double valorUnitario;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -32,7 +36,7 @@ public class Item {
 	}
 
 	public Produto getProduto() {
-		return produto;
+		return this.produto;
 	}
 
 	public void setProduto(Produto produto) {
@@ -40,7 +44,7 @@ public class Item {
 	}
 
 	public Integer getQuantidade() {
-		return quantidade;
+		return this.quantidade;
 	}
 
 	public void setQuantidade(Integer quantidade) {
@@ -48,7 +52,7 @@ public class Item {
 	}
 
 	public Double getValorUnitario() {
-		return valorUnitario;	
+		return this.valorUnitario;
 	}
 
 	public void setValorUnitario(Double valorUnitario) {
@@ -56,16 +60,16 @@ public class Item {
 	}
 
 	public NotaFiscal getNotaFiscal() {
-		return notaFiscal;
+		return this.notaFiscal;
 	}
 
 	public void setNotaFiscal(NotaFiscal notaFiscal) {
 		this.notaFiscal = notaFiscal;
 	}
-	
+
 	public Double getTotal() {
-		if (quantidade != null && valorUnitario != null)
-			return quantidade * valorUnitario;
+		if (this.quantidade != null && this.valorUnitario != null)
+			return this.quantidade * this.valorUnitario;
 		else
 			return null;
 	}
