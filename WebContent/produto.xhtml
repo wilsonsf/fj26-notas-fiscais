@@ -18,11 +18,8 @@
       <legend>Dados do Produto</legend>
       <h:inputHidden value="#{produtoBean.produto.id}" />
 
-      <h:outputLabel value="Nome: " for="nome" />
-      <h:inputText id="nome" value="#{produtoBean.produto.nome}" />
-
-      <h:outputLabel value="Descrição: " for="descricao" />
-      <h:inputText id="descricao" value="#{produtoBean.produto.descricao}" />
+      <caelum:campoTexto id="nome" label="Nome:" value="#{produtoBean.produto.nome}" />
+      <caelum:campoTexto id="descricao" label="Descrição:" value="#{produtoBean.produto.descricao}" />
 
       <h:outputLabel value="Preço: " for="preco" />
       <h:inputText id="preco" value="#{produtoBean.produto.preco}">
@@ -31,7 +28,9 @@
       </h:inputText>
 
       <h:commandButton value="Gravar" action="#{produtoBean.grava}" rendered="#{empty produtoBean.produto.id}"/>
-      <h:commandButton value="Atualizar" action="#{produtoBean.grava}" rendered="#{not empty produtoBean.produto.id}"/>
+      <h:commandButton value="Atualizar" action="#{produtoBean.grava}" rendered="#{not empty produtoBean.produto.id}">
+        <f:ajax execute="@form" render="@all" />
+      </h:commandButton>
       <h:commandButton value="Cancelar" action="#{produtoBean.cancela}"/>
     </fieldset>
   </h:form>
@@ -39,8 +38,8 @@
   <h:form>
   <h2>Listagem de Produtos</h2>
 
-  <h:dataTable value="#{produtoBean.produtos}" var="produto" styleClass="dados"
-    rowClasses="impar,par">
+  <h:dataTable value="#{produtoBean.produtos}" var="produto" 
+    styleClass="dados" rowClasses="impar,par">
 
     <h:column>
       <f:facet name="header">Nome</f:facet>
@@ -54,15 +53,25 @@
 
     <h:column>
       <f:facet name="header">Valor</f:facet>
-      #{produto.preco}
-      <f:facet name="footer">#{produtoBean.totalProdutos}</f:facet>
+      
+      <h:outputLabel value="#{produto.preco}">
+        <f:convertNumber type="currency" currencySymbol="R$ " locale="pt_BR" />
+      </h:outputLabel>
+      
+      <f:facet name="footer">
+        <h:outputLabel value="#{produtoBean.totalProdutos}">
+          <f:convertNumber type="currency" currencySymbol="R$ " locale="pt_BR" />
+        </h:outputLabel>
+      </f:facet>
     </h:column>
 
     <h:column>
       <f:facet name="header">Ações</f:facet>
+      
       <h:commandLink value="Alterar">
         <f:setPropertyActionListener value="#{produto}" target="#{produtoBean.produto}" />
       </h:commandLink>
+      
       <h:commandLink action="#{produtoBean.remove(produto)}" value="Remover">
         <f:ajax render="@form"/>
       </h:commandLink>
