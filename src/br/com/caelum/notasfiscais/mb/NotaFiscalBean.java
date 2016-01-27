@@ -9,6 +9,7 @@ import br.com.caelum.notasfiscais.dao.ProdutoDao;
 import br.com.caelum.notasfiscais.modelo.Item;
 import br.com.caelum.notasfiscais.modelo.NotaFiscal;
 import br.com.caelum.notasfiscais.modelo.Produto;
+import br.com.caelum.notasfiscais.tx.Transactional;
 
 @Named
 @ViewScoped
@@ -23,6 +24,7 @@ public class NotaFiscalBean {
 	private Item item = new Item();
 	private NotaFiscal notaFiscal = new NotaFiscal();
 
+	@Transactional
 	public String grava() {
 		this.notaFiscalDao.adiciona(this.notaFiscal);
 

@@ -10,6 +10,7 @@ import javax.inject.Named;
 
 import br.com.caelum.notasfiscais.dao.ProdutoDao;
 import br.com.caelum.notasfiscais.modelo.Produto;
+import br.com.caelum.notasfiscais.tx.Transactional;
 
 @Named
 @RequestScoped
@@ -23,6 +24,7 @@ public class ProdutoBean implements Serializable {
 	private Produto produto = new Produto();
 	private List<Produto> produtos;
 
+	@Transactional
 	public void grava() {
 		if(this.produto.getId() == null) {
 			this.dao.adiciona(this.produto);

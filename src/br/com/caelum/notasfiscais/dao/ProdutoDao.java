@@ -17,29 +17,17 @@ public class ProdutoDao implements Serializable{
 	private EntityManager manager;
 
 	public void adiciona(Produto produto) {
-		this.manager.getTransaction().begin();
-
 		//persiste o objeto
 		this.manager.persist(produto);
-
-		this.manager.getTransaction().commit();
 	}
 
 
 	public void remove(Produto produto) {
-		this.manager.getTransaction().begin();
-
 		this.manager.remove(this.manager.merge(produto));
-
-		this.manager.getTransaction().commit();
 	}
 
 	public void atualiza(Produto produto) {
-		this.manager.getTransaction().begin();
-
 		this.manager.merge(produto);
-
-		this.manager.getTransaction().commit();
 	}
 
 	public List<Produto> buscaPorNome(String nome) {
