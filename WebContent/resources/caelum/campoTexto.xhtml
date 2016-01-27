@@ -1,19 +1,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:cc="http://java.sun.com/jsf/composite"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 <cc:interface>
   <cc:attribute name="id" required="true" />
   <cc:attribute name="label" required="true" />
   <cc:attribute name="value" />
+  <cc:attribute name="type" />
+  <cc:attribute name="placeholder" />
 </cc:interface>
 
 <cc:implementation>
   <h:message for="#{cc.attrs.id}" />
   <h:outputLabel value="#{cc.attrs.label}" for="#{cc.attrs.id}" />
-  <h:inputText id="#{cc.attrs.id}" value="#{cc.attrs.value}" />
+  <h:inputText id="#{cc.attrs.id}" value="#{cc.attrs.value}">
+    <f:passThroughAttribute name="type" value="#{not empty cc.attrs.type ? cc.attrs.type : 'text'}" />
+    <f:passThroughAttribute name="placeholder" value="#{not empty cc.attrs.placeholder ? cc.attrs.placeholder : ''}" />
+  </h:inputText>
 </cc:implementation>
 
 </html>
