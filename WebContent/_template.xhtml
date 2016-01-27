@@ -5,7 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-  <title>Sistema de Notas Fiscais - UberDist</title>
+  <title>Sistema de Notas Fiscais - UberDist<h:outputText value="#{titulo}" rendered="#{not empty titulo}"/></title>
   <h:outputStylesheet library="css" name="style.css"/>
 </h:head>
 
