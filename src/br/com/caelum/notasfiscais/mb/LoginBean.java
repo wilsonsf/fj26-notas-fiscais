@@ -30,7 +30,7 @@ public class LoginBean implements Serializable {
 			this.usuarioLogado.logar(this.usuario);
 			this.eventoLogin.fire(this.usuario);
 
-			return "index?faces-redirect=true";
+			return "produto?faces-redirect=true";
 		} else {
 			this.usuarioLogado.deslogar();
 			limpaFormulario();

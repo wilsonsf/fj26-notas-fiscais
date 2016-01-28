@@ -7,16 +7,12 @@
 
 <ui:composition template="/_template.xhtml">
 <ui:define name="corpo">
-  
+
   <h:form>
-    <ul>
-      <li><h:commandLink action="index?faces-redirect=true" value="Index" /></li>
-      <li><h:commandLink action="produto?faces-redirect=true" value="Produtos" /></li>
-      <li><h:commandLink action="notafiscal?faces-redirect=true" value="Notas Fiscais" /></li>
-      <li><h:commandLink action="listanotas?faces-redirect=true" value="Lista Notas Fiscais" /></li>
-    </ul>
+    <h:inputText value="" />
+    <h:commandButton action="index" value="Ok" />    
   </h:form>
-  
+
 </ui:define>
 </ui:composition>
 </html>

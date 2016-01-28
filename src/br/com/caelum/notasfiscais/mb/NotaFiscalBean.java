@@ -31,7 +31,7 @@ public class NotaFiscalBean implements Serializable{
 
 	public String avanca() {
 		if(this.conversation.isTransient()) {
-			this.conversation.setTimeout(1000*60*10); // 1s > 1min > 10min
+			this.conversation.setTimeout(1000*60*3); // 1s > 1min > 10min
 			this.conversation.begin();
 		}
 		return "item?faces-redirect=true";
