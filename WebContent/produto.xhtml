@@ -23,9 +23,11 @@
       <caelum:campoTexto id="descricao" label="Descrição:" value="#{produtoBean.produto.descricao}" />
 
       <h:outputLabel value="Preço: " for="preco" />
-      <h:inputText id="preco" value="#{produtoBean.produto.preco}">
-          <f:passThroughAttribute name="type" value="number" />
-          <!-- tipos: email, date, search, url, tel, range, text (padrão) -->
+      <h:inputText id="preco" value="#{produtoBean.produto.preco}"
+        required="true" requiredMessage="Preço obrigatório" validatorMessage="O valor mínimo é 0,50">
+        <f:validateDoubleRange minimum="0.50"/>  
+        <f:passThroughAttribute name="type" value="number" />
+        <!-- tipos: email, date, search, url, tel, range, text (padrão) -->
       </h:inputText>
 
       <f:ajax execute="@form" render="@all">
