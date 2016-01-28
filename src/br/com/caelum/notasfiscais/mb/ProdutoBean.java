@@ -7,7 +7,7 @@ import java.util.List;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
-import br.com.caelum.notasfiscais.dao.ProdutoDao;
+import br.com.caelum.notasfiscais.dao.Dao;
 import br.com.caelum.notasfiscais.modelo.Produto;
 import br.com.caelum.notasfiscais.tx.Transactional;
 
@@ -17,7 +17,8 @@ public class ProdutoBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private ProdutoDao dao;
+	private Dao<Produto> dao;
+//	private ProdutoDao dao;
 
 	private Produto produto = new Produto();
 	private List<Produto> produtos;
