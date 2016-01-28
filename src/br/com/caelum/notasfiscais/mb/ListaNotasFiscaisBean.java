@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import br.com.caelum.notasfiscais.dao.NotaFiscalDao;
+import br.com.caelum.notasfiscais.datamodel.DataModelNotasFiscais;
 import br.com.caelum.notasfiscais.modelo.NotaFiscal;
 
 @ViewModel
@@ -12,6 +13,8 @@ public class ListaNotasFiscaisBean {
 
 	@Inject
 	private NotaFiscalDao dao;
+	@Inject
+	private DataModelNotasFiscais dataModel;
 
 	private List<NotaFiscal> notasFiscais;
 
@@ -21,6 +24,10 @@ public class ListaNotasFiscaisBean {
 		}
 
 		return this.notasFiscais;
+	}
+
+	public DataModelNotasFiscais getDataModel() {
+		return this.dataModel;
 	}
 
 }
