@@ -14,8 +14,8 @@
     <fieldset>
       <legend>Dados da nota</legend>
       
-      <caelum:campoTexto id="cnpj" label="CPNJ do Cliente:" value="#{notaFiscalBean.notaFiscal.cnpj}"
-        placeholder="00.000.000/0000-00"/>
+      <h:outputLabel value="CNPJ do Cliente:" />
+      <p:inputMask mask="99.999.999/9999-99" placeholder="00.000.000/0000-00"/>
       
       <h:outputLabel value="Data:" for="data" />
       <p:calendar pattern="dd/MM/yyyy" value="#{notaFiscalBean.notaFiscal.data.time}" placeholder="dd/mm/yyyy"/>
