@@ -13,7 +13,7 @@
 
 <h:body>
   <div id="cabecalho">
-    <h:graphicImage library="imagens" name="logo-uber.png" id="logoCompany"/>
+    <a href="index.xhtml"><h:graphicImage library="imagens" name="logo-uber.png" id="logoCompany"/></a>
     <div id="usuarioLogado">
       <h:form rendered="#{usuarioLogadoBean.logado}">
         Logado como: #{usuarioLogadoBean.usuario.login}
