@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.br.CNPJ;
+
 @Entity
 public class NotaFiscal implements Serializable{
 
@@ -24,6 +26,8 @@ public class NotaFiscal implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
+	@CNPJ(message="CNPJ inválido")
+//	@Pattern(regexp="\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2}",message="CNPJ inválido")
 	private String cnpj;
 
 	@Temporal(TemporalType.DATE)
