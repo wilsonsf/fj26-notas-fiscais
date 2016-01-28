@@ -7,12 +7,15 @@
 
 <ui:composition template="/_template.xhtml">
 <ui:define name="corpo">
-
+  <h2>Índice</h2>
   <h:form>
-    <h:inputText value="" />
-    <h:commandButton action="index" value="Ok" />    
+    <fieldset>
+      <legend>Form básico</legend>
+      <h:outputLabel value="Teste" />
+      <h:inputText value="#{indexBean.campoTexto}" />
+      <h:commandButton value="Ok" action="index?faces-redirect=true"/>
+    </fieldset>    
   </h:form>
-
 </ui:define>
 </ui:composition>
 </html>
